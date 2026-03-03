@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class TemperatureAnalyzer {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        float[] temp = new float[7];
+        float sum = 0;
+
+        System.out.println("Enter 7 temperatures:");
+        for (int i = 0; i < 7; i++) {
+            temp[i] = sc.nextFloat();
+            sum += temp[i];
+        }
+
+        float max = temp[0], min = temp[0];
+
+        for (int i = 1; i < 7; i++) {
+            if (temp[i] > max) max = temp[i];
+            if (temp[i] < min) min = temp[i];
+        }
+
+        float avg = sum / 7;
+        System.out.printf("%.1f %.1f %.2f", max, min, avg);
+
+        sc.close();
+    }
+}
