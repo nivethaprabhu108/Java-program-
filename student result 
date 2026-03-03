@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class StudentResult {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Marks: ");
+        int marks = sc.nextInt();
+
+        if (marks >= 90) {
+            System.out.println("Result: Distinction");
+        } else if (marks >= 60) {
+            System.out.println("Result: First Class");
+        } else if (marks >= 50) {
+            System.out.println("Result: Second Class");
+        } else {
+            System.out.println("Result: Fail");
+        }
+
+        sc.close();
+    }
+}
