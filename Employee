@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+class Employee {
+    int empId;
+    double basicSalary;
+
+    double calculateGross() {
+        double hra = basicSalary * 0.20;
+        double da = basicSalary * 0.10;
+        return basicSalary + hra + da;
+    }
+}
+
+public class EmployeeMain {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Employee e = new Employee();
+
+        System.out.print("Enter Basic Salary: ");
+        e.basicSalary = sc.nextDouble();
+
+        System.out.println((int)e.calculateGross());
+        sc.close();
+    }
+}
