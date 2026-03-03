@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class AttendanceSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Number of Students: ");
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            System.out.print("Enter Attendance for Student " + i + " (P/A): ");
+            char status = sc.next().charAt(0);
+        }
+
+        System.out.println("Attendance Recorded Successfully!");
+        sc.close();
+    }
+}
