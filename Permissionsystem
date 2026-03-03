@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class PermissionSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Permission Value: ");
+        int permission = sc.nextInt();
+
+        System.out.println("Read: " + ((permission & 4) != 0 ? "Yes" : "No"));
+        System.out.println("Write: " + ((permission & 2) != 0 ? "Yes" : "No"));
+        System.out.println("Execute: " + ((permission & 1) != 0 ? "Yes" : "No"));
+
+        sc.close();
+    }
+}
