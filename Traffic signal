@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class TrafficSignal {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Signal Code: ");
+        int code = sc.nextInt();
+
+        switch (code) {
+            case 1: System.out.println("Stop"); break;
+            case 2: System.out.println("Ready"); break;
+            case 3: System.out.println("Go"); break;
+            default: System.out.println("Invalid Code");
+        }
+
+        sc.close();
+    }
+}
