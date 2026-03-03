@@ -1,0 +1,81 @@
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class Client{
+    public static void main(String[] args) {
+        try {
+            Socket s = new Socket("localhost", 5000);
+
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            Scanner sc = new Scanner(System.in);
+
+            String msg = "";
+            while (!msg.equalsIgnoreCase("bye")) {
+                // Send to server
+                System.out.print("Client: ");
+                msg = sc.nextLine();
+                dos.writeUTF(msg);
+
+                // Receive from server
+                String reply = dis.readUTF();
+                System.out.println("Server: " + reply);
+            }
+
+            s.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            ServerSocket ss = new ServerSocket(5000);
+            System.out.println("Server started... Waiting for client");
+
+            Socket s = ss.accept();
+            System.out.println("Client connected");
+
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            Scanner sc = new Scanner(System.in);
+
+            String msg = "";
+            while (!msg.equalsIgnoreCase("bye")) {
+                // Receive from client
+                msg = dis.readUTF();
+                System.out.println("Client: " + msg);
+
+                // Send to client
+                System.out.print("Server: ");
+                String reply = sc.nextLine();
+                dos.writeUTF(reply);
+            }
+
+            s.close();
+            ss.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
