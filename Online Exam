@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class OnlineExam {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] questions = {
+            "1. Java is platform independent? (yes/no)",
+            "2. int is a primitive data type? (yes/no)",
+            "3. Scanner is in java.util package? (yes/no)"
+        };
+
+        String[] answers = {"yes", "yes", "yes"};
+        int score = 0;
+
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            String userAnswer = sc.next();
+
+            if (userAnswer.equalsIgnoreCase(answers[i])) {
+                score++;
+            }
+        }
+
+        System.out.println("Your Score: " + score + "/" + questions.length);
+
+        sc.close();
+    }
+}
