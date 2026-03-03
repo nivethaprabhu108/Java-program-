@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class ATMSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double balance = 10000;   // Example balance
+        double minBalance = 1000;
+        double dailyLimit = 5000;
+
+        System.out.print("Enter Withdrawal Amount: ");
+        double withdraw = sc.nextDouble();
+
+        if (withdraw > balance) {
+            System.out.println("Insufficient Balance!");
+        } else if ((balance - withdraw) < minBalance) {
+            System.out.println("Minimum Balance not maintained!");
+        } else if (withdraw > dailyLimit) {
+            System.out.println("Withdrawal limit exceeded!");
+        } else {
+            balance -= withdraw;
+            System.out.println("Withdrawal Successful!");
+            System.out.println("Remaining Balance: " + balance);
+        }
+
+        sc.close();
+    }
+}
