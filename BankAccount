@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+class BankAccount {
+    int accountNumber;
+    int balance;
+
+    void deposit(int amount) {
+        balance += amount;
+    }
+
+    void withdraw(int amount) {
+        if (amount <= balance)
+            balance -= amount;
+    }
+}
+
+public class BankMain {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BankAccount b = new BankAccount();
+
+        System.out.print("Enter Initial Balance: ");
+        b.balance = sc.nextInt();
+
+        System.out.print("Enter Deposit Amount: ");
+        b.deposit(sc.nextInt());
+
+        System.out.print("Enter Withdraw Amount: ");
+        b.withdraw(sc.nextInt());
+
+        System.out.println(b.balance);
+        sc.close();
+    }
+}
