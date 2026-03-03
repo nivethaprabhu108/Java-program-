@@ -1,0 +1,57 @@
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            ServerSocket ss = new ServerSocket(5000);
+            System.out.println("Server started. Waiting for client...");
+
+            Socket s = ss.accept(); // accept client
+            System.out.println("Client connected.");
+
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+
+            String msg = dis.readUTF();
+            System.out.println("Client says: " + msg);
+
+            dos.writeUTF("Hello Client, message received!");
+
+            ss.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+Server.java
+Displaying Server.java.
+
+
+
+
+
+
+
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Socket s = new Socket("localhost", 5000);
+
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+
+            dos.writeUTF("Hello Server!");
+
+            String reply = dis.readUTF();
+            System.out.println("Server says: " + reply);
+
+            s.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
